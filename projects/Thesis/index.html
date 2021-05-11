@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Zijiao Yang | Zijiao Yang</title>
+<title>Zijiao Yang | Multimodal SRL</title>
 <meta name="description" content="Zijiao's personal website
 ">
 
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/Thesis/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -124,8 +124,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 projects
@@ -159,56 +157,32 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2>a simple whitespace theme for academics</h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Multimodal SRL</h1>
+    <p class="post-description"></p>
+  </header>
 
+  <article>
+    <p>My master thesis explored how incorporating visual context can improve semantic role labeling. I used attention to include bounding box features into a standard Bi-LSTM’s hidden states in one approach. I also explored adding contrastive loss between sentence embedding and whole image feature to guide the training. Due to the lack of labeled data, I obtained semantic role labels automatically for image captioning datasets (MSCOCO, Flickr30k). Nonetheless, my attention approach trained on this automatically obtained dataset performs slightly better than a pure-text baseline. And additional analysis also suggests the improvement came from a better grounding of semantic roles into the image features.
+<a href="/assets/pdf/master_thesis.pdf" target="_blank">[Master_thesis]</a><a href="https://docs.google.com/presentation/d/15IU6ukxsP_MlmFguVDJQNbwM0Sx6fGTFCDsO_2NF8kQ/edit?usp=sharing" target="_blank">[slides]</a></p>
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/att-srl.png" alt="" title="example image" />
+    </div>
+    <div class="col-sm-6 mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/att-t-conf.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    One of the approaches in the thesis is shown on the left side; it is an attention-based model (hidden states of LSTM attends over bounding box features). And the resulted context vector is concatenated with hidden states for final predictions. On the right side, This heatmap represents the confusion difference between t-SRL (pure-text SRL) and at-SRL (attention-based model) without decoding. It is computed by subtracting the confusion matrix of at-SRL (no decoding) from tSRL (no decoding). Blue color represents the confusion decrease for at-SRL compared with tSRL; for example, cellLOC,ARG2 represents at-SRL is less confused about LOC with ARG2 by 11. Furthermore, red color means the confusion increase for at-SRL compared with t-SRL.
+</div>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/github-metadata/">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/twitter/">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2018/distill/">a distill-style blog post</a></h3>
-        <p class="post-meta">December 22, 2018</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-  </ul>
+<p><strong>Conjecture:</strong></p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="Zijiao Yang">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="Zijiao Yang - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="Zijiao Yang - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<p>The attention model tends to correctly label location-related entities as location info is rich in image, so the attention model might effectively utilize that info from an image.
+Since ARG2 is known to be easily confused with LOC, DIR, (<a href="https://www.aclweb.org/anthology/P17-1044">He et al</a>) more location info might make it more difficult to not confuse ARG2 as LOC.</p>
 
-
+  </article>
 
 </div>
 
